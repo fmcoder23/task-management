@@ -1,7 +1,7 @@
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { Priority } from "@prisma/client";
 import { Transform } from "class-transformer";
-import { IsDate, IsEnum, IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { IsDate, IsEnum, IsNotEmpty, IsOptional, IsString, IsUUID } from "class-validator";
 
 export class CreateTaskDto {
 
@@ -37,6 +37,7 @@ export class CreateTaskDto {
     
     @IsOptional()
     @IsString()
+    @IsUUID()
     @Transform(({ value }) => value.trim())
     @ApiPropertyOptional({ example: "Category id" })
     categoryId: string;
