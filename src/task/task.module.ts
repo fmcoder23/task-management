@@ -4,10 +4,11 @@ import { TaskController } from './task.controller';
 import { PrismaModule } from 'src/prisma/prisma.module';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthGuard } from 'src/auth/auth.guard';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
-  imports: [PrismaModule, JwtModule],
+  imports: [ConfigModule, PrismaModule, JwtModule],
   controllers: [TaskController],
-  providers: [TaskService, AuthGuard],
+  providers: [TaskService, AuthGuard, ConfigService],
 })
 export class TaskModule {}
